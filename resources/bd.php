@@ -83,12 +83,12 @@ function deleteCursosById($id)
     $conn = closeDB();
 }
 
-function updateCusro($id, $nombre, $codigo, $descripcion, $usuario_username)
+function updateCurso(/*$id,*/$nombre, $codigo, $descripcion, $usuario_username)
 {
     $conn = openDB();
 
-    $sentencia = $conn->prepare('UPDATE curso SET id=:id, codigo=:codigo, nombre=:nombre, descripcion=:descripcion, usuario_username=:usuario_username WHERE id=:id');
-    $sentencia->bindParam(':id', $id);
+    $sentencia = $conn->prepare('UPDATE curso SET /*id=:id,*/ codigo=:codigo, nombre=:nombre, descripcion=:descripcion, usuario_username=:usuario_username WHERE id=:id');
+    // $sentencia->bindParam(':id', $id);
     $sentencia->bindParam(':codigo', $codigo);
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':descripcion', $descripcion);
