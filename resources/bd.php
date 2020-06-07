@@ -54,13 +54,12 @@ function selectCursoById($id)
     return $respuesta;
 }
 
-function insertCursos(/*$id,*/$nombre, $codigo, $descripcion, $usuario_username)
+function insertCursos($nombre, $codigo, $descripcion, $usuario_username)
 {
     // Comentem el ID perque al auto assignarse no hem de declarar-lo
     $conn = openDB();
 
-    $sentencia = $conn->prepare("INSERT INTO curso VALUES (/*:id,*/ :codigo, :nombre, :descripcion, :usuario_username)");
-    // $sentencia->bindParam(':id', $id);
+    $sentencia = $conn->prepare("INSERT INTO curso VALUES (null, :codigo, :nombre, :descripcion, :usuario_username)");
     $sentencia->bindParam(':codigo', $codigo);
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':descripcion', $descripcion);
@@ -83,12 +82,12 @@ function deleteCursosById($id)
     $conn = closeDB();
 }
 
-function updateCurso(/*$id,*/$nombre, $codigo, $descripcion, $usuario_username)
+function updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username)
 {
     $conn = openDB();
 
-    $sentencia = $conn->prepare('UPDATE curso SET /*id=:id,*/ codigo=:codigo, nombre=:nombre, descripcion=:descripcion, usuario_username=:usuario_username WHERE id=:id');
-    // $sentencia->bindParam(':id', $id);
+    $sentencia = $conn->prepare('UPDATE curso SET codigo=:codigo, nombre=:nombre, descripcion=:descripcion, usuario_username=:usuario_username WHERE id=:id');
+    $sentencia->bindParam(':id', $id);
     $sentencia->bindParam(':codigo', $codigo);
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':descripcion', $descripcion);

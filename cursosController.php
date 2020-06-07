@@ -13,12 +13,12 @@ if (isset($_POST['borrar'])) {
 }
 // Alter
 else if (isset($_POST['modificacionCurso'])) {
-    // $id = $_POST['idCurso'];
+    $id = $_POST['idCurso'];
     $codigo = $_POST['codigoCurso'];
     $nombre = $_POST['nombreCurso'];
     $descripcion = $_POST['descCurso'];
     $usuario_username = $_POST['userCurso'];
-    updateCurso(/*$id,*/$nombre, $codigo, $descripcion, $usuario_username);
+    updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username);
     header('Location: cursos.php');
 }
 // Insert
