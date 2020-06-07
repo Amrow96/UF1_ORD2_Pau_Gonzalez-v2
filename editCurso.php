@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php
 include './plantilla_base.php';
 include './cursosController.php';
