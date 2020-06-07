@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php include './plantilla_base.php';
 include './cursosController.php';
 
@@ -13,33 +12,26 @@ $usuarios = selectAllUsuarios();
         <div class="card-body">
             <!--Selector del metode-->
             <form action="cursosController.php" method="post">
-                <!--Identificador Curso-->
-                <!-- <div class="form-group row">
-                    <label class="col-2">Identificador</label>
-                    <div class="col-10">
-                        <input class=" form-control" type="number" id="idCurso" name="idCurso" maxlength="11" placeholder="Introduce el id" value="<?php echo $ciudad['id'] ?>"> </div>
-                </div> -->
-
                 <!-- Codigo Curso -->
                 <div class="form-group row">
                     <label class="col-2">Codigo Curso</label>
                     <div class="col-10">
-                        <input class=" form-control" type="number" id="codigoCurso" name="codigoCurso" maxlength="11" placeholder="Introduce el id de la ciudad" value="<?php echo $ciudad['codigo'] ?>"> </div>
+                        <input class=" form-control" type="number" id="codigoCurso" name="codigoCurso" maxlength="11" placeholder="Introduce el codigo del curso"> </div>
                 </div>
                 <!--Nombre Curso-->
                 <div class="form-group row">
                     <label class="col-2">Nombre</label>
                     <div class="col-10">
-                        <!-- TODO: s'han de guardar les variables a la sessió i desde el controlador guardarles -->
-                        <input class=" form-control" type="text" id="nombreCurso" name="nombreCurso" maxlength="45" placeholder="Introduce el id de la ciudad" value="<?php echo $ciudad['nombre'] ?>">
+
+                        <input class=" form-control" type="text" id="nombreCurso" name="nombreCurso" maxlength="45" placeholder="Introduce el nombre del curso">
                     </div>
                 </div>
                 <!--Descripcion Curso-->
                 <div class="form-group row">
                     <label class="col-2">Descripción</label>
                     <div class="col-10">
-                        <!-- TODO: s'han de guardar les variables a la sessió i desde el controlador guardarles -->
-                        <input class=" form-control" type="text" id="descCurso" name="descCurso" maxlength="45" placeholder="Introduce la descripción del curso" value="<?php echo $ciudad['descripcion'] ?>">
+
+                        <input class=" form-control" type="text" id="descCurso" name="descCurso" maxlength="45" placeholder="Introduce la descripción del curso">
                     </div>
                 </div>
                 <!--Usuario Curso-->
