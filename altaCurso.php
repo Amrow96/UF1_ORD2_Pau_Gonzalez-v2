@@ -1,5 +1,9 @@
 <?php session_start(); ?>
-<?php include './plantilla_base.php' ?>
+<?php include './plantilla_base.php';
+include './cursosController.php';
+
+$usuarios = selectAllUsuarios();
+?>
 <?php startblock('titulo') ?>Alta Curso<?php endblock() ?>
 
 <?php startblock('principal') ?>
@@ -42,8 +46,20 @@
                 <div class="form-group row">
                     <label class="col-2">Nombre de usuario</label>
                     <div class="col-10">
-                        <!-- TODO: s'han de guardar les variables a la sessió i desde el controlador guardarles -->
-                        <input class=" form-control" type="text" id="userCurso" name="userCurso" maxlength="45" placeholder="Introduce el usuario del curso" value="<?php echo $ciudad['usuario_username'] ?>">
+                        <select name="userCurso" class=" form-control" id="userCurso">
+                            <?php
+                            foreach ($usuarios as $usuario) {
+                                //Muestra y selecciona el usuario que tenemos por defecto
+                                if ($usuario['username'] == $curso['usuario_username']) {
+                                    //selected
+                                    echo "<option value=\"" . $usuario['username'] . "\" selected> " . $usuario['nom'] . " </option>";
+                                } else {
+                                    //normal
+                                    echo "<option value=\"" . $usuario['username'] . "\"> " . $usuario['nom'] . " </option>";
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
 
