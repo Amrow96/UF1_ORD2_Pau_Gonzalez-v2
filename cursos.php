@@ -38,7 +38,7 @@ Cursos
         <!-- Contenido de las tablas -->
         <div class="container">
             <div class="card mt-2">
-                <div class="card-header bg-primary titular">DATOS RESERVA</div>
+                <div class="card-header bg-primary titular">Datos Curso</div>
                 <div class="card-body">
                     <table class="table table-striped table-hover">
                         <!-- Mostramos la cabecera de la tabla -->
