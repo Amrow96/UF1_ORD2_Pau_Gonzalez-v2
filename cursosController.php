@@ -23,7 +23,6 @@ else if (isset($_POST['modificacionCurso'])) {
 }
 // Insert
 else if (isset($_POST['altaForm'])) {
-    // $id = $_POST['idCurso'];
     $codigo = $_POST['codigoCurso'];
     $nombre = $_POST['nombreCurso'];
     $descripcion = $_POST['descCurso'];

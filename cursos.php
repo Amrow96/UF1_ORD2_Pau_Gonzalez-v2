@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/DWES/UF1_ORD2_Pau_Gonzalez/plantilla_base.php' ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/DWES/UF1_ORD2_Pau_Gonzalez/resources/bd.php' ?>
 

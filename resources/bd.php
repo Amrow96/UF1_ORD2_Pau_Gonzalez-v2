@@ -44,7 +44,7 @@ function selectCursoById($id)
 {
     $conn = openDB();
 
-    $sentencia = $conn->prepare('SELECT * FROM cursos WHERE id=:id');
+    $sentencia = $conn->prepare('SELECT * FROM curso WHERE id=:id');
     $sentencia->bindParam(':id', $id);
 
     $sentencia->execute();
