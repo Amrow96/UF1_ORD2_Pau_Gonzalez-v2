@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/DWES/UF1_ORD2_Pau_Gonzalez/plantilla_base.php' ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/DWES/UF1_ORD2_Pau_Gonzalez/resources/bd.php' ?>
 
@@ -8,10 +7,13 @@ Cursos
 <?php startblock('principal') ?>
 
 <div class="container-fluid mt-5">
+    <?php require_once './partials/mensajes.php' ?>
+
     <?php
     $cursos = selectAllCursos();
     ?>
     <div class="container">
+
         <div class="card-body border border-primary">
             <a href="altaCurso.php">
                 <button class="btn btn-primary">NUEVO CURSO</button>

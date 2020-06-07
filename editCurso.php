@@ -11,6 +11,8 @@ if (isset($_POST['modificar'])) {
 
 <?php startblock('principal') ?>
 <div class="container">
+    <?php require_once './partials/mensajes.php' ?>
+
     <div class="card">
         <div class="card-header bg-primary titular">Curso</div>
         <div class="card-body">

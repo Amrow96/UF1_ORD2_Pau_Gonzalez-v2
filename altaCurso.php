@@ -1,12 +1,12 @@
 <?php include './plantilla_base.php';
 include './cursosController.php';
-
 $usuarios = selectAllUsuarios();
 ?>
 <?php startblock('titulo') ?>Alta Curso<?php endblock() ?>
 
 <?php startblock('principal') ?>
 <div class="container">
+    <?php require_once './partials/mensajes.php' ?>
     <div class="card">
         <div class="card-header bg-primary titular">Alta Curso</div>
         <div class="card-body">
@@ -63,6 +63,5 @@ $usuarios = selectAllUsuarios();
             </form>
         </div>
     </div>
-</div>
 </div>
 <?php endblock() ?>

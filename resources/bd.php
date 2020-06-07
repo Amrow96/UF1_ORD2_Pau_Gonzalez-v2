@@ -57,17 +57,21 @@ function selectCursoById($id)
 function insertCursos($nombre, $codigo, $descripcion, $usuario_username)
 {
     // Comentem el ID perque al auto assignarse no hem de declarar-lo
-    $conn = openDB();
+    try {
+        $conn = openDB();
 
-    $sentencia = $conn->prepare("INSERT INTO curso VALUES (null, :codigo, :nombre, :descripcion, :usuario_username)");
-    $sentencia->bindParam(':codigo', $codigo);
-    $sentencia->bindParam(':nombre', $nombre);
-    $sentencia->bindParam(':descripcion', $descripcion);
-    $sentencia->bindParam(':usuario_username', $usuario_username);
+        $sentencia = $conn->prepare("INSERT INTO curso VALUES (null, :codigo, :nombre, :descripcion, :usuario_username)");
+        $sentencia->bindParam(':codigo', $codigo);
+        $sentencia->bindParam(':nombre', $nombre);
+        $sentencia->bindParam(':descripcion', $descripcion);
+        $sentencia->bindParam(':usuario_username', $usuario_username);
 
-    $sentencia->execute();
-
-    $conn = closeDB();
+        $sentencia->execute();
+        $conn = closeDB();
+        $_SESSION['mensaje'] = "Registro insertado correctamente";
+    } catch (PDOException $p) {
+        $_SESSION['error'] = $p->getCode() . ' ' . $p->getMessage();
+    }
 }
 
 function deleteCursosById($id)
@@ -84,15 +88,20 @@ function deleteCursosById($id)
 
 function updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username)
 {
-    $conn = openDB();
+    try {
+        $conn = openDB();
 
-    $sentencia = $conn->prepare('UPDATE curso SET codigo=:codigo, nombre=:nombre, descripcion=:descripcion, usuario_username=:usuario_username WHERE id=:id');
-    $sentencia->bindParam(':id', $id);
-    $sentencia->bindParam(':codigo', $codigo);
-    $sentencia->bindParam(':nombre', $nombre);
-    $sentencia->bindParam(':descripcion', $descripcion);
-    $sentencia->bindParam(':usuario_username', $usuario_username);
-    $sentencia->execute();
+        $sentencia = $conn->prepare('UPDATE curso SET codigo=:codigo, nombre=:nombre, descripcion=:descripcion, usuario_username=:usuario_username WHERE id=:id');
+        $sentencia->bindParam(':id', $id);
+        $sentencia->bindParam(':codigo', $codigo);
+        $sentencia->bindParam(':nombre', $nombre);
+        $sentencia->bindParam(':descripcion', $descripcion);
+        $sentencia->bindParam(':usuario_username', $usuario_username);
+        $sentencia->execute();
 
-    $conn = closeDB();
+        $conn = closeDB();
+        $_SESSION['mensaje'] = "Registro actualizado correctamente";
+    } catch (PDOException $p) {
+        $_SESSION['error'] = $p->getCode() . ' ' . $p->getMessage();
+    }
 }
