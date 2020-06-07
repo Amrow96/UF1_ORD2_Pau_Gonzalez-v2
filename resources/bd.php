@@ -70,20 +70,25 @@ function insertCursos($nombre, $codigo, $descripcion, $usuario_username)
         $conn = closeDB();
         $_SESSION['mensaje'] = "Registro insertado correctamente";
     } catch (PDOException $p) {
-        $_SESSION['error'] = $p->getCode() . ' ' . $p->getMessage();
+        $_SESSION['error'] = errorMessage($p);
     }
 }
 
 function deleteCursosById($id)
 {
-    $conn = openDB();
+    try {
+        $conn = openDB();
 
-    $sentencia = $conn->prepare("DELETE FROM curso WHERE id=:id");
-    $sentencia->bindParam(':id', $id);
+        $sentencia = $conn->prepare("DELETE FROM curso WHERE id=:id");
+        $sentencia->bindParam(':id', $id);
 
-    $sentencia->execute();
+        $sentencia->execute();
 
-    $conn = closeDB();
+        $conn = closeDB();
+        $_SESSION['mensaje'] = "Registro borrado correctamente";
+    } catch (PDOException $p) {
+        $_SESSION['error'] = errorMessage($p);
+    }
 }
 
 function updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username)
@@ -102,6 +107,42 @@ function updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username)
         $conn = closeDB();
         $_SESSION['mensaje'] = "Registro actualizado correctamente";
     } catch (PDOException $p) {
-        $_SESSION['error'] = $p->getCode() . ' ' . $p->getMessage();
+        $_SESSION['error'] = errorMessage($p);
     }
+}
+
+function errorMessage($e)
+{
+    if (!empty($e->errorInfo[1])) {
+        switch ($e->errorInfo[1]) {
+            case 1062:
+                $mensaje = 'Registro duplicado';
+                break;
+            case 1451:
+                $mensaje = 'Registro con elementos relacionados';
+                break;
+
+            default:
+                $mensaje = $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
+                break;
+        }
+    } else {
+        switch ($e->getCode()) {
+            case 1044:
+                $mensaje = 'Usuario y/o password incorrecto';
+                break;
+            case 1049:
+                $mensaje = 'Base de datos desconocida';
+                break;
+            case 2002:
+                $mensaje = 'No se encuentra el servidor';
+                break;
+
+            default:
+                $mensaje = $e->getCode() . ' - ' . $e->getMessage();
+
+                break;
+        }
+    }
+    return $mensaje;
 }
