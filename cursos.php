@@ -72,8 +72,29 @@ Cursos
                                     </td>
                                     <td>
                                         <form action="cursosController.php" method="POST">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?php echo $cursos["id"] ?>">
+                                                Borrar
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal<?php echo $cursos["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Seguro que quieres borrar?</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="borrar" class="btn btn-danger" value="<?php echo $cursos["id"] ?>">Borrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!-- Fem un listen al controller amb el name borrar que cridi al metode borrar de bd -->
-                                            <button type="submit" name="borrar" class="btn btn-danger" value="<?php echo $cursos["id"] ?>">Borrar</button>
                                         </form>
                                     </td>
                                 </tr>

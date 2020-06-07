@@ -8,6 +8,7 @@ if (isset($_POST['borrar'])) {
     $id = $_POST['borrar'];
     deleteCursosById($id); //Esborrem la ciutat
     header('Location: cursos.php');
+    exit();
 }
 // Alter
 else if (isset($_POST['modificacionCurso'])) {
@@ -18,6 +19,7 @@ else if (isset($_POST['modificacionCurso'])) {
     $usuario_username = $_POST['userCurso'];
     updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username);
     header('Location: cursos.php');
+    exit();
 }
 // Insert
 else if (isset($_POST['altaForm'])) {
@@ -32,5 +34,6 @@ else if (isset($_POST['altaForm'])) {
     } else {
         header('Location: cursos.php');
     }
+    exit();
 }
 ?>

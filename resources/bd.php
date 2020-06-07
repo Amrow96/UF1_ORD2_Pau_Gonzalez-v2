@@ -67,11 +67,16 @@ function insertCursos($nombre, $codigo, $descripcion, $usuario_username)
         $sentencia->bindParam(':usuario_username', $usuario_username);
 
         $sentencia->execute();
-        $conn = closeDB();
         $_SESSION['mensaje'] = "Registro insertado correctamente";
     } catch (PDOException $p) {
         $_SESSION['error'] = errorMessage($p);
+        $curso['codigoCurso'] = $codigo;
+        $curso['nombreCurso'] = $nombre;
+        $curso['descCurso'] = $descripcion;
+        $curso['userCurso'] = $usuario_username;
+        $_SESSION['curso'] = $curso;
     }
+    $conn = closeDB();
 }
 
 function deleteCursosById($id)
@@ -84,11 +89,11 @@ function deleteCursosById($id)
 
         $sentencia->execute();
 
-        $conn = closeDB();
         $_SESSION['mensaje'] = "Registro borrado correctamente";
     } catch (PDOException $p) {
         $_SESSION['error'] = errorMessage($p);
     }
+    $conn = closeDB();
 }
 
 function updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username)
@@ -104,11 +109,17 @@ function updateCurso($id, $nombre, $codigo, $descripcion, $usuario_username)
         $sentencia->bindParam(':usuario_username', $usuario_username);
         $sentencia->execute();
 
-        $conn = closeDB();
         $_SESSION['mensaje'] = "Registro actualizado correctamente";
     } catch (PDOException $p) {
         $_SESSION['error'] = errorMessage($p);
+        $curso['id'] = $id;
+        $curso['codigo'] = $codigo;
+        $curso['nombre'] = $nombre;
+        $curso['descripcion'] = $descripcion;
+        $curso['usuario_username'] = $usuario_username;
+        $_SESSION['curso'] = $curso;
     }
+    $conn = closeDB();
 }
 
 function errorMessage($e)

@@ -1,10 +1,15 @@
 <?php
 include './plantilla_base.php';
 include './cursosController.php';
-if (isset($_POST['modificar'])) {
-    $id = $_POST['modificar'];
-    $curso = selectCursoById($id);
-    $usuarios = selectAllUsuarios();
+
+if (isset($_SESSION['curso'])) {
+    $curso = $_SESSION['curso'];
+} else {
+    if (isset($_POST['modificar'])) {
+        $id = $_POST['modificar'];
+        $curso = selectCursoById($id);
+        $usuarios = selectAllUsuarios();
+    }
 }
 ?>
 <?php startblock('titulo') ?>Modificar Curso<?php endblock() ?>
