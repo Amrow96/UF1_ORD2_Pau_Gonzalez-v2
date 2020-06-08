@@ -1,13 +1,14 @@
 <?php
 include './plantilla_base.php';
 include './cursosController.php';
+if (isset($_SESSION['curso'])) {
+    $curso = $_SESSION['curso'];
+}
 if (isset($_POST['modificar'])) {
     $id = $_POST['modificar'];
     $curso = selectCursoById($id);
 }
-if (isset($_SESSION['curso'])) {
-    $curso = $_SESSION['curso'];
-}
+
 $usuarios = selectAllUsuarios();
 
 ?>
