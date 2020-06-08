@@ -66,7 +66,7 @@ $usuarios = selectAllUsuarios();
                 <!--Botón Submit-->
                 <div class="form-group">
                     <input class="form-control btn btn-outline-primary col-2 offset-2" type="submit" value="GUARDAR" name="altaForm">
-                    <input class="form-control btn btn-outline-secondary col-2 ml-4" type="submit" value="CANCELAR">
+                    <a href="cursos.php" class="form-control btn btn-outline-secondary col-2 ml-4">CANCELAR</a>
                 </div>
             </form>
         </div>
