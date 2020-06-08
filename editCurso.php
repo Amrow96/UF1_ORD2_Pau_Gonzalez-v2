@@ -1,16 +1,15 @@
 <?php
 include './plantilla_base.php';
 include './cursosController.php';
-
+if (isset($_POST['modificar'])) {
+    $id = $_POST['modificar'];
+    $curso = selectCursoById($id);
+}
 if (isset($_SESSION['curso'])) {
     $curso = $_SESSION['curso'];
-} else {
-    if (isset($_POST['modificar'])) {
-        $id = $_POST['modificar'];
-        $curso = selectCursoById($id);
-        $usuarios = selectAllUsuarios();
-    }
 }
+$usuarios = selectAllUsuarios();
+
 ?>
 <?php startblock('titulo') ?>Modificar Curso<?php endblock() ?>
 
@@ -34,13 +33,13 @@ if (isset($_SESSION['curso'])) {
                 <div class="form-group row">
                     <label class="col-2">Codigo Curso</label>
                     <div class="col-10">
-                        <input class=" form-control" type="number" id="codigoCurso" name="codigoCurso" maxlength="11" placeholder="Introduce el id de la curso" value="<?php echo $curso['codigo'] ?>"> </div>
+                        <input class=" form-control" type="number" id="codigoCurso" name="codigoCurso" maxlength="11" placeholder="Introduce el codigo del curso" value="<?php echo $curso['codigo'] ?>"> </div>
                 </div>
                 <!--Nombre Curso-->
                 <div class="form-group row">
                     <label class="col-2">Nombre</label>
                     <div class="col-10">
-                        <input class=" form-control" type="text" id="nombreCurso" name="nombreCurso" maxlength="45" placeholder="Introduce el id de la curso" value="<?php echo $curso['nombre'] ?>">
+                        <input class=" form-control" type="text" id="nombreCurso" name="nombreCurso" maxlength="45" placeholder="Introduce el nombre del curso" value="<?php echo $curso['nombre'] ?>">
                     </div>
                 </div>
                 <!--Descripcion Curso-->
@@ -71,7 +70,6 @@ if (isset($_SESSION['curso'])) {
                         </select>
                     </div>
                 </div>
-
                 <!--Botón Submit-->
                 <div class="form-group">
                     <input class="form-control btn btn-outline-primary col-2 offset-2" type="submit" value="GUARDAR" name="modificacionCurso">

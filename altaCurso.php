@@ -3,10 +3,11 @@ include './cursosController.php';
 if (isset($_SESSION['curso'])) {
     $curso = $_SESSION['curso'];
 } else {
-    $curso['codigoCurso'] = "";
-    $curso['nombreCurso'] = "";
-    $curso['descCurso'] = "";
-    $curso['userCurso'] = "";
+    if (isset($_POST['modificar'])) {
+        $id = $_POST['modificar'];
+        $curso = selectCursoById($id);
+        $usuarios = selectAllUsuarios();
+    }
 }
 $usuarios = selectAllUsuarios();
 ?>
