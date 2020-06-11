@@ -6,7 +6,7 @@ function openDB()
     $servername = "localhost:8889";
     $username = "root";
     $password = "root";
-    $conn = new PDO("mysql:host=$servername;dbname=dwes_ord_2; charset=UTF8", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=uf1_dwes_ord_2; charset=UTF8", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
