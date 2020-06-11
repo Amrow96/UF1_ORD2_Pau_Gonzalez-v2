@@ -1,5 +1,3 @@
-
-<?php session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/DWES/UF1_ORD2_Pau_Gonzalez/resources/bd.php' ?>
 
 <?php
